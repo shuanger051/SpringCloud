@@ -4,6 +4,9 @@ server:
 eureka:
   instance:
     hostname: localhost
+  server:
+     enableSelfPreservation: false       # 关闭自我保护模式（缺省为打开）
+     evictionIntervalTimerInMs: 1000   # 续期时间，即扫描失效服务的间隔时间（缺省
   client:
     registerWithEureka: false
     fetchRegistry: false

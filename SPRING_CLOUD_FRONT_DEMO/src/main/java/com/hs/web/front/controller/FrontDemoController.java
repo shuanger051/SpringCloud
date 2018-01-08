@@ -27,7 +27,7 @@ public class FrontDemoController {
 
     @RequestMapping(value = "/sayHi",method = RequestMethod.GET)
     public String frontServiceDemo(@Valid DemoEntity demoEntity){
-        return serviceFrontDemo.frontServiceDemo(demoEntity.getName());
+        return serviceFrontDemo.frontServiceDemo(demoEntity);
     }
 
 }

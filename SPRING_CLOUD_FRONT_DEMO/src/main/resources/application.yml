@@ -8,5 +8,11 @@ spring:
   application:
     name: service-front
 
-#api.url: http://localhost:8080/
-api.version: v2
+#开启服务熔断机制
+feign:
+  hystrix:
+    enabled: true
+
+#控制接口版本
+api:
+  version: v1
