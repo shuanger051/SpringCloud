@@ -3,8 +3,11 @@ package com.hs.web.front.service.impl;
 import com.hs.web.front.entity.DemoEntity;
 import com.hs.web.front.service.ServiceFrontDemo;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 /**
  * Project ： SPRING_CLOUD_EUREKA_DEMO
@@ -19,8 +22,13 @@ import javax.validation.Valid;
 public class ServiceFrontDemoHystric implements ServiceFrontDemo{
 
     @Override
-    public String frontServiceDemo(@Valid DemoEntity demoEntity){
-        return "Sorry " + demoEntity.getName() + ", The Server which one you request is error.Please check the system logs.";
+    public String frontServiceDemoV1(@RequestHeader("Authorization") String authorization, @RequestParam Map<String,Object> param){
+        return "Sorry " + param.get("name") + ", The Server which one you request is error.Please check the system logs.";
+    }
+
+    @Override
+    public String frontServiceDemoV2(@RequestHeader("Authorization") String authorization, @RequestParam Map<String,Object> param){
+        return "Sorry " + param.get("name") + ", The Server which one you request is error.Please check the system logs.";
     }
 
 }

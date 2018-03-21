@@ -2,7 +2,9 @@ package com.hs.web.app.controller;
 
 import com.hs.web.app.base.conditional.ApiVersion;
 import com.hs.web.app.entity.DemoEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -20,6 +22,9 @@ import javax.validation.Valid;
 @RequestMapping("/{version}/app")
 public class AppDemoController {
 
+    @Value("${service-app-name}")
+    String serviceAppName;
+
     @RequestMapping("/hi")
     @ApiVersion(1)
     public String helloWorldV1(@Valid DemoEntity demoEntity){
@@ -30,6 +35,16 @@ public class AppDemoController {
     @ApiVersion(2)
     public String helloWorldV2(@Valid DemoEntity demoEntity){
         return  "Hi " + demoEntity.getName() + ",This is Version2.0 API Feign";
+    }
+
+    /**
+     * @Test：获取统一配置中心的配置信息
+     * @param demoEntity
+     * @return
+     */
+    @RequestMapping(value = "/sayConfig",method = RequestMethod.GET)
+    public String sayConfig(@Valid DemoEntity demoEntity){
+        return "The Config Center for ServiceFront's name is : " + serviceAppName;
     }
 
 }

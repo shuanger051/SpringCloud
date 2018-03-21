@@ -54,16 +54,17 @@ public class MyZuulFilter extends ZuulFilter {
 
         HttpServletRequest request = ctx.getRequest();
         logger.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
-        Object accessToken = request.getParameter("token");
+        Object accessToken = request.getHeader("Authorization");
 
         if(accessToken == null) {
-            logger.warn("Token is empty,Ur cant request this Server,Please check token");
+            logger.warn("Token is empty,U cant request this Server,Please check token");
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             try {
-                ctx.getResponse().getWriter().write("Token is empty,Ur cant request this Server,Please check token");
-            }catch (Exception e){}
-
+                ctx.getResponse().getWriter().write("Token is empty,U cant request this Server,Please check token");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             return null;
         }
 
