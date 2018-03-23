@@ -31,4 +31,9 @@ public class ServiceFrontDemoHystric implements ServiceFrontDemo{
         return "Sorry " + param.get("name") + ", The Server which one you request is error.Please check the system logs.";
     }
 
+    @Override
+    public String sayConfig(@RequestHeader("Authorization") String authorization,@RequestParam Map<String,Object> param){
+        return "Sorry " + param.get("name") + ", The Server which one you request is error.Please check the system logs.";
+    }
+
 }

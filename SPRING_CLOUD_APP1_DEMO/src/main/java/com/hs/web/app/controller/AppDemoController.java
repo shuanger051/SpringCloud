@@ -45,7 +45,7 @@ public class AppDemoController {
     @ApiVersion(1)
     @RequestMapping(value = "/sayConfig",method = RequestMethod.GET)
     public String sayConfig(@Valid DemoEntity demoEntity){
-        return "The Config Center for ServiceFront's name is : " + serviceAppName;
+        return "New The Config Center for ServiceFront's name is : " + serviceAppName;
     }
 
 }

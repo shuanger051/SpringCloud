@@ -39,6 +39,10 @@ public class FrontDemoController {
         return serviceFrontDemo.frontServiceDemoV2("123",BeanMapUtils.transBean2Map(demoEntity));
     }
 
-
+    @ApiVersion(1)
+    @RequestMapping(value = "/sayConfig",method = RequestMethod.GET)
+    public String sayConfig(@Valid DemoEntity demoEntity){
+        return serviceFrontDemo.sayConfig("123",BeanMapUtils.transBean2Map(demoEntity));
+    }
 
 }

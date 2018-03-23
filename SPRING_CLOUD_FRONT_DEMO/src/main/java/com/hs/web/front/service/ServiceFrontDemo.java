@@ -31,4 +31,7 @@ public interface ServiceFrontDemo {
     @RequestMapping(value = "/v2/app/hi",method = RequestMethod.GET)
     String frontServiceDemoV2(@RequestHeader("Authorization") String authorization,@RequestParam Map<String,Object> param);
 
+    @RequestMapping(value = "/v1/app/sayConfig",method = RequestMethod.GET)
+    String sayConfig(@RequestHeader("Authorization") String authorization,@RequestParam Map<String,Object> param);
+
 }
